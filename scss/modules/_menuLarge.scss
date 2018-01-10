@@ -1,0 +1,87 @@
+/**
+ * @author Prénom Nom courriel
+ * Menu version écran large
+ *** @todo à personnaliser selon concept
+**/
+
+.menu--large {
+  display: none;
+  position: relative;
+  @media(min-width: $tablettePortrait) {
+    display: block;
+    margin-bottom: 6rem;
+    &__logo{
+      display: inline-block;
+      background: url('../images/off-logo.svg') no-repeat;
+      background-size: contain;
+      width: 200px;
+      height: 70px;
+      position: absolute;
+      top: -20px;
+      right: 15px;
+      z-index: 1;
+    }
+    &__liste {
+      text-align: left;
+      margin: 0;
+      padding: 0;
+      background-color: $razzMaTazzPink;
+    }
+    &__listeItem {
+      list-style-type: none;
+      display: inline-block;
+      width: 18%;
+      text-align: center;
+      font-family: "Josefin Sans", sans-serif;
+    }
+    &__lien {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0 1rem 0;
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: $white;
+      }
+    }
+    &__listeItem {
+      background-color: $razzMaTazzPink;
+      &--actif .menu--large__lien:link, &--actif .menu--large__lien:visited{
+        color: $white;
+        background-color: $gulfBlue;
+        position: relative;
+        .menu--large__lien--active{
+          background: url('../images/cercle_active.svg');
+          background-size: cover;
+          width: 15px;
+          height: 10px;
+          vertical-align: text-top;
+          display: block;
+          position: absolute;
+          left: 45%;
+          bottom: 5px;
+        }
+      }
+    }
+    /* Affichage du sous-menu actif */
+    &__sousListe{
+      display:none;
+    }
+    &__listeItem.menu--large__listeItem--actif{
+      .menu--large__sousListe{
+        display: block;
+        position:absolute;
+        left:0;
+        @include listeHorizontale;
+        li{
+          background-color: $gulfBlue;
+          margin: 1rem 0.5rem;
+          padding: 0 2rem;
+        }
+        li:first-child{
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

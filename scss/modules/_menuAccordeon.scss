@@ -1,0 +1,168 @@
+/**
+ * MenuAccordeon version mobile seulement
+ *    mais les états des .menu__lien sont définis aussi pour une version écran large
+ * @todo Adapter ce fichier selon le projet
+ * @author Prénom Nom courriel
+**/
+
+/**
+ * TABLE DES MATIÈRES
+ * Variables et mixins à transférer dans les utilitaires
+ **** Palette de couleurs
+ **** Mixins
+ * État des liens
+ * Menu version mobile (base)
+ **** Faux bouton menu (sans js)
+ * Menu version mobile avec js
+ * Bouton .menu__controle (avec icones SVG)
+ * Menu accordéon version écran large CACHÉ
+ */
+
+/****** Mixins du menuAccordeon ***********/
+@mixin etatHoverActive {
+  background-color: $gulfBlue;
+  color: $white;
+}
+
+@mixin etatFocus {
+  outline-offset: -5px;
+  outline: lighten($gulfBlue, 30%) auto 5px;
+}
+
+@mixin boutonMenu{
+  display: block;
+  text-align: center;
+  float: right;
+  background-color: transparent;
+  border: none;
+  width: 60px;
+  padding-top: 0.5rem;
+  .menu__libelle {
+    @include fontSize(12px);
+    font-family: "Josefin Sans", sans-serif;
+    color: $white;
+    text-transform: uppercase;
+    display: block;
+  }
+  .menu__icone {
+    width: 100%;
+    display: inline-block;
+    padding: 5px 5px 0px 5px;
+    border: 2px solid $white;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    .icone {
+      fill: $white;
+    }
+  }
+  &:hover,
+  &:active {
+    .menu__icone {
+      background-color: $gulfBlue;
+    }
+  }
+}
+
+/****** États des liens ***********/
+.menu {
+  &__lien {
+    display: block;
+    padding: 0.25rem 0.7rem;
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: black;
+    }
+    &:hover {
+      @include etatHoverActive;
+    }
+    &:active,
+    &:focus {
+      @include etatFocus;
+    }
+  }
+  &__lien.menu__lien--actif {
+    background-color: lighten($gulfBlue, 30%);
+    color: $white;
+  }
+}
+
+/****** Menu version mobile *******/
+.menu{
+  background-color: $razzMaTazzPink;
+  position: relative;
+  .menu__logo{
+    display: inline-block;
+    background: url('../images/off-logo.svg') no-repeat;
+    background-size: contain;
+    width: 200px;
+    height: 70px;
+    position: absolute;
+    top: 9px;
+    left: 15px;
+  }
+}
+
+.accordeon .menu {
+  &__liste {
+    overflow: hidden; /* important pour ne pas voir les li s'en aller hors champs */
+    clear: both;
+    margin: 0;
+    padding: 0;
+  }
+  &__listeItem {
+    border: none;
+    border-bottom: 1px solid $gulfBlue;
+    display: block;
+    position: relative;
+    transition: all .5s ease-in-out;
+  }
+}
+
+/**** Menu version mobile sans JavaScript ****/
+.menu.accordeon{
+  display:none;
+}
+/* le faux bouton est un lien vers le menu du fat footer */
+.fauxBoutonMenu {
+  @include boutonMenu;
+  text-decoration: none;
+  .menu__icone{
+    width: calc(100% - 14px);
+  }
+  @media(min-width: $tablettePortrait) {
+    display: none;
+  }
+}
+.js .fauxBoutonMenu {
+  display: none;
+}
+
+
+/* Menu version mobile avec js*/
+.js {
+  .accordeon{
+    display:block;
+  }
+  .menu {
+    &__liste--fermer .menu__listeItem {
+      border: none;
+      max-height: 0;
+      top: -1000px;
+    }
+    &__liste--ouvert .menu__listeItem {
+      max-height: auto;
+      top: 0;
+    }
+    /* Bouton .menu__controle */
+    &__controle {
+      @include boutonMenu;
+    }
+  }
+  // sur écran large TOUT le menu accordéon est caché.
+  @media(min-width: 601px) {
+    .menu.accordeon{
+      display:none;
+    }
+  }
+}

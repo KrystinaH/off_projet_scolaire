@@ -1,0 +1,318 @@
+/****** AGENCEMENTS ******/
+/** Arrière plan **/
+body {
+  background-color: $gulfBlue;
+}
+
+.arriereplan {
+  padding-bottom: 4rem;
+  background: url("../images/fond_w600.jpg") repeat-y center;
+  background-size: 100%;
+  background-position: top;
+  @media (min-width: $desktop) {
+    background: url("../images/fond_w2880.jpg") no-repeat center;
+    background-size: 100%;
+    background-position: top;
+  }
+}
+
+/** Header **/
+@media (min-width:$desktop) {
+  .lienevitement {
+    display: block;
+    text-align: center;
+    background-color: $white;
+  }
+}
+
+header {
+  p {
+    @include fontSize(20px);
+    @include txtInverse;
+    font-weight: normal;
+    margin: 0;
+    text-align: center;
+  }
+  @media (min-width: $desktop) {
+    p {
+      @include fontSize(36px);
+    }
+  }
+}
+
+.h1 {
+  line-height: 0.5;
+  font-weight: bold;
+  @media (min-width: $desktop) {
+    padding-top: 2rem;
+  }
+}
+
+/** Main **/
+@media (min-width: $desktop) {
+  main {
+    background-color: $blue-alpha50;
+    padding: gutter(12);
+  }
+}
+
+h1 {
+  line-height: 1;
+  padding-top: 2rem;
+  @media (min-width: $desktop) {
+    padding-top: 2rem;
+    padding-left: span(1 of 6)/2;
+  }
+}
+
+h1,
+.h3 {
+  @include txtInverse;
+  margin: 0;
+}
+
+#top {
+  padding-top: 2rem;
+}
+
+.infosartiste {
+  @include margesMobile;
+  .audiovisuelle {
+    .h3 {
+      @include fontSize(16px);
+    }
+  }
+  .details {
+    .lienBouton {
+      @include bouton;
+      display: inline-block;
+      padding: 0.5rem 0;
+      width: span(3 of 4);
+      text-decoration: none;
+    }
+    ul {
+      color: $white;
+      padding: 0;
+      margin-top: 0;
+    }
+    .description {
+      background-color: $white;
+      padding: gutter(6);
+      .h2 {
+        color: $gulfBlue;
+        font-weight: bold;
+        @include fontSize(18px);
+      }
+      h2 {
+        color: $gulfBlue;
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-family: "Titillium Web", sans-serif;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .infosartiste {
+    margin: 0;
+    display: flex;
+    .audiovisuelle,
+    .details {
+      width: span(6 of 12);
+    }
+    .audiovisuelle {
+      h2 {
+        padding-left: span(1 of 6)/2;
+      }
+    }
+    .details {
+      margin-left: gutter(12);
+      padding-top: 3.5rem;
+      .alignerDroite {
+        margin: 0;
+        .lienBouton {
+          text-decoration: none;
+          margin: 0;
+          margin-bottom: 1.5rem;
+          width: span(3 of 6);
+        }
+      }
+      .description {
+        .h2 {
+          @include fontSize(24px);
+        }
+      }
+    }
+  }
+}
+
+.suggestions {
+  @include margesMobile;
+  padding-top: 3rem;
+  .h3 {
+    padding-left: 0;
+  }
+  @media (min-width: $desktop) {
+    margin: 0;
+    .h3 {
+      padding-left: span(1 of 12)/2;
+      margin-bottom: 2rem;
+    }
+  }
+  .suggestions__artistes {
+    a:hover {
+      picture {
+        filter: grayscale(1);
+        transition: all 0.5s ease;
+      }
+      figcaption {
+        background-color: $gulfBlue;
+      }
+    }
+    padding-left: 0;
+    figure {
+      margin: 0;
+      figcaption {
+        @include bouton;
+        margin: 0;
+        text-align: center;
+        padding: 0.5rem 0;
+        h2 {
+          margin: 0;
+        }
+      }
+    }
+  }
+  @media (min-width: $desktop) {
+    .suggestions__artistes {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.top {
+  @include bouton;
+  width: span(3 wide of 5)+gutter(5);
+  margin: 0 span(1 of 5);
+  padding: 0.5rem 0;
+  a {
+    text-decoration: none;
+    @include txtInverse;
+    text-transform: inherit;
+  }
+}
+
+/** Footer **/
+footer {
+  background-color: $gulfBlue;
+  ul {
+    padding-left: 0;
+  }
+  .wrap {
+    padding-top: 2rem;
+    .menu--footer {
+      display: none;
+    }
+    @media (min-width: $desktop) {
+      .menu--footer {
+        display: inline-block;
+        width: span(10 of 12);
+        margin-left: span(1 wide of 12);
+        font-weight: bold;
+        .menu--footer__liste {
+          background-color: $white;
+          @include shadow;
+          display: flex;
+          justify-content: space-between;
+          padding: 2rem span(1 of 10);
+          .menu--footer__lien {
+            color: $gulfBlue;
+            text-decoration: none;
+            @include fontSize(20px);
+          }
+          .menu--footer__sousListe {
+            padding-left: 1rem;
+            .menu--footer__souslien {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.followme {
+  @include margesMobile;
+  color: $white;
+  .medias {
+    padding: 2rem 0;
+    .medias__icones {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      li {
+        width: span(1 of 4);
+        svg {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .infolettre {
+    input[type=submit] {
+      border: 0;
+      padding: 0.5rem 0;
+      width: span(3 wide of 5)+gutter(5);
+      margin: 0 span(1 of 5);
+    }
+    input[type=email] {
+      display: block;
+      width: 100%;
+      margin-bottom: gutter();
+    }
+  }
+  @media (min-width: $desktop) {
+    width: span(10 of 12);
+    margin-left: span(1 wide of 12);
+    display: flex;
+    justify-content: space-between;
+    h2 {
+      @include txtInverse;
+      text-transform: inherit;
+    }
+    .medias {
+      padding: 0;
+      width: span(5 of 10);
+      .medias__icones {
+        justify-content: space-around;
+        li {
+          width: span(1 of 5);
+        }
+      }
+    }
+    .infolettre {
+      width: span(5 of 10);
+      form {
+        div {
+          padding: 0 3rem;
+        }
+      }
+    }
+  }
+}
+
+small {
+  text-align: center;
+  display: block;
+  color: $white;
+  padding-top: 5rem;
+}

@@ -1,0 +1,74 @@
+/* --- accordéon --- */
+/* Sans JavaScript par défaut, les blocs sont déployés */
+.accordeon__bloc {
+  display: block;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  list-style: none;
+  padding-left: 0;
+}
+
+.accordeon__controlePoignee {
+  float: right;
+  /* Sans JS, les chevrons up et down d'actionnement du mécanisme sont cachés */
+  .icone {
+    display: none;
+  }
+  .icone--chevron-down {
+    background: url('../images/chevron-arrow-down.svg');
+  }
+  .icone--chevron-up {
+    background: url('../images/chevron-arrow-up.svg');
+  }
+}
+
+.accordeon__controle {
+  outline: none; /* annuler les styles par défaut du button */
+  border: 1px solid $gulfBlue;
+  text-align: left;
+  background-color: #eee;
+  font-weight: bold;
+  font-family: "Josefin Sans", sans-serif;
+  padding-top: 1rem;
+}
+
+.accordeon__controle,
+.accordeon__bloc {
+  width: 100%;
+}
+
+/* Avec JavaScript les boutons d'actionnement du mécanisme s'affichent */
+.js{
+
+  .accordeon__controlePoignee{
+    .icone{
+      display: inline-block;
+      width:1em;
+      height:1em;
+      background-position: center center;
+      background-size:contain;
+    }
+  }
+
+  .accordeon__controle:focus,
+  .accordeon__pli--isExpanded .accordeon__controle {
+    background-color: $gulfBlue;
+    color: $white;
+    .icone--chevron-up{
+      background-image: url('../images/chevron-arrow-up-blanc.svg');
+    }
+    .icone--chevron-down{
+      background-image: url('../images/chevron-arrow-down-blanc.svg');
+    }
+  }
+
+  .accordeon__bloc,
+  .accordeon__pli--isCollapsed .accordeon__bloc {
+    height: 0;
+  }
+
+  .accordeon__pli--isExpanded .accordeon__bloc {
+    background-color: #eee;
+    height: auto;
+  }
+}

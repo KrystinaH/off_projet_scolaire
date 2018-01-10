@@ -1,0 +1,114 @@
+@charset "UTF-8";
+/**
+ * @author Prénom Nom courriel
+ * @todo à personnaliser
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * LIBs (bower_components)
+ ** Normalize
+ ** Susy
+ * UTILITAIRES
+ ** variables
+ ** mixins
+ * BASE
+ ** General
+ ** Typographie
+ ** Hyperliens
+ ** Réglages de Susy
+ * MODULES
+ ** Menu Accordéon
+ **
+ * AGENCEMENTS
+ **
+ **
+ *
+ */
+/****** LIB ******/
+/**** Normalize ****/
+@import "../bower_components/normalize-scss/sass/normalize/import-now";
+/**** Système de grille fluide - Susy ****/
+@import "../bower_components/susy/sass/susy";
+@import "../bower_components/susy/sass/plugins/svg-grid";
+/****** HELPERS ******/
+/**** Utilitaires ****/
+@import "utilitaires/variables";
+@import "utilitaires/mixins";
+
+/****** BASE ******/
+/***** Général ******/
+@include border-box-sizing();
+main {
+  clear: both;
+  p.top {
+    text-align: center;
+    @media(min-width: 601px) {
+      display: none;
+    }
+  }
+}
+
+img{
+  max-width:100%;
+}
+
+ul{
+  list-style: none;
+}
+
+.alignerDroite{
+  text-align: right;
+}
+
+/**** Typographie ****/
+@import "base/typo";
+/**** Hyperliens ****/
+@import "base/hyperliens";
+
+/****** MODULES ******/
+/**** Menu principal responsive ****/
+@import "modules/menuAccordeon";
+@import "modules/menuLarge";
+/**** Accordéon ****/
+@import "modules/accordeon";
+/**** Agencements ****/
+@import "agencements/agencements";
+
+/****** GRILLE ******/
+@media(max-width:600px){
+  $susy: (
+          'columns': susy-repeat(4),
+          'gutters': 0.25,
+          'spread': 'narrow',
+          'container-spread': 'wide',
+  );
+  //.wrap {
+  //  background: susy-svg-grid((
+  //          'columns': susy-repeat(4),
+  //          'gutters': 0.25,
+  //          'spread': 'narrow',
+  //          'container-spread': 'wide',
+  //  )) no-repeat scroll;
+  //}
+}
+@media(min-width:601px){
+  $susy: (
+          'columns': susy-repeat(12),
+          'gutters': 0.25,
+          'spread': 'narrow',
+          'container-spread': 'narrow'
+  );
+  .wrap {
+    max-width:1000px;
+    margin: 0 auto;
+    //background: susy-svg-grid((
+    //        'columns': susy-repeat(12),
+    //        'gutters': 0.25,
+    //        'spread': 'narrow',
+    //        'container-spread': 'narrow'
+    //)) no-repeat scroll;
+    padding-top: 10vh;
+  }
+}
+
+

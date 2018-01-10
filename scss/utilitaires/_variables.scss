@@ -1,0 +1,51 @@
+/**
+ * @author Krystina Hamel <krystina.hamel@gmail.com>
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * Polices de caractères
+ * Palette de couleurs
+ * Points de rupture
+ **/
+
+/** Polices de caractères **/
+$fontePrimaire: 'Josefin Sans', sans-serif;
+$fonteSecondaire: 'Titillium Web', sans-serif;
+
+/** Palette de couleurs **/
+// Utiliser http://chir.ag/projects/name-that-color pour obtenir
+// des noms uniques et mémorisables
+// Permettez-vous d'utiliser un nom de variable plus explicite si la suggestion de name-that-color est trop bizarre
+$gulfBlue: #01165B;
+$razzMaTazzPink: #EF0454;
+$anikiwaBlue: #A0FBFA;
+$black: #000000;
+$white: #FFFFFF;
+
+$dominante: $gulfBlue;
+$secondaire: $razzMaTazzPink;
+$texteInverse:$white;
+$hyperlien:$razzMaTazzPink;
+
+
+/** Gradations pour les variations de transparence **/
+// Pour obtenir 25% de transparence:
+// transparentize($bleuMoyen, 0.25);
+// rgba(53, 138, 224, 0.75);
+$black-alpha75:rgba(0, 0, 0, 0.75);
+$blue-alpha50: rgba(1, 22, 91, 0.5);
+
+
+/** Points de rupture **/
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+$mobilePortrait : 320px;
+/* smartphones, Android phones, landscape iPhone */
+$mobilePaysage : 480px;
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+$tablettePortrait : 600px;
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+$tablettePaysage : 801px;
+/* big landscape tablets, laptops, and desktops */
+$desktop : 1025px;
+/* hi-res laptops and desktops */
+$desktopLarge : 1281px;

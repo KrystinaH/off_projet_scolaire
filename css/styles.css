@@ -1,0 +1,1463 @@
+@charset "UTF-8";
+/**
+ * @author Prénom Nom courriel
+ * @todo à personnaliser
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * LIBs (bower_components)
+ ** Normalize
+ ** Susy
+ * UTILITAIRES
+ ** variables
+ ** mixins
+ * BASE
+ ** General
+ ** Typographie
+ ** Hyperliens
+ ** Réglages de Susy
+ * MODULES
+ ** Menu Accordéon
+ **
+ * AGENCEMENTS
+ **
+ **
+ *
+ */
+/****** LIB ******/
+/**** Normalize ****/
+/*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+figcaption,
+figure {
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+ * Add the correct display in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ */
+button {
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  /**
+   * Remove the inner border and padding in Firefox.
+   */
+  /**
+   * Restore the focus styles unset by the previous rule.
+   */
+}
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Show the overflow in Edge.
+ */
+input {
+  overflow: visible;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+  /**
+   * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+   */
+}
+[type="search"]::-webkit-search-cancel-button, [type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  color: inherit;
+  /* 2 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+textarea {
+  overflow: auto;
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Add the correct display in IE 9-.
+ */
+menu {
+  display: block;
+}
+
+/* Scripting
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10-.
+ */
+[hidden] {
+  display: none;
+}
+
+/**** Système de grille fluide - Susy ****/
+/****** HELPERS ******/
+/**** Utilitaires ****/
+/**
+ * @author Krystina Hamel <krystina.hamel@gmail.com>
+ * ------------------
+ * TABLE DES MATI├êRES
+ * ------------------
+ * Polices de caract├¿res
+ * Palette de couleurs
+ * Points de rupture
+ **/
+/** Polices de caract├¿res **/
+/** Palette de couleurs **/
+/** Gradations pour les variations de transparence **/
+/** Points de rupture **/
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+/* smartphones, Android phones, landscape iPhone */
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+/* big landscape tablets, laptops, and desktops */
+/* hi-res laptops and desktops */
+/**
+ * ----------------------------
+ * TABLE DES MATI├êRES - MIXINS
+ * ----------------------------
+ * base (BoxSizing, Clearfix)
+ * accessibilit├®
+ * typographie
+ * @author Krystina Hamel <krystina.hamel@gmail.com>
+**/
+/******** Utilitaires de base (BoxSizing, Clearfix) *********/
+/* BoxSizing */
+/* Clearfix: pour contrer le probl├¿me des enfants flottants*/
+/******** Utilitaires pour accessibilit├® *********/
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/******** Utilitaires pour typographie *********/
+/* utilitaires de mise en page */
+/* Boutons */
+/****** BASE ******/
+/***** Général ******/
+* {
+  box-sizing: border-box;
+}
+
+main {
+  clear: both;
+}
+main p.top {
+  text-align: center;
+}
+@media (min-width: 601px) {
+  main p.top {
+    display: none;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.alignerDroite {
+  text-align: right;
+}
+
+/**** Typographie ****/
+/**
+ * @author Krystina Hamel <krystina.hamel@gmail.com>
+**/
+/**
+ * --------------------------------------------------------
+ * TABLE DES MATI├êRES - Typographie responsive (Mobile First)
+ * --------------------------------------------------------
+ * Polices
+ * Base d├®cimale
+ * Hi├®rarchie responsive
+ */
+/** Polices **/
+/*  //Exemple
+font-family: Raleway;
+  src:url(../polices/Raleway/raleway-regular.woff) format('woff'),
+  url(../polices/Raleway/raleway-regular.woff2)format('woff2'),
+  url(../polices/Raleway/raleway-regular.ttf) format('truetype');
+}
+*/
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url("../fonts/JosefinSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Titillium Web';
+  src: url("../fonts/TitilliumWeb-Regular.ttf") format("truetype");
+}
+/** Base d├®cimale **/
+html {
+  font-size: 62.5%;
+  font-family: "Titillium Web", sans-serif;
+}
+
+body {
+  /* 16px pour toutes les largeurs d'├®cran */
+  font-size: 16px;
+  font-size: 1.6rem;
+  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
+  line-height: 1.375;
+}
+
+@media (min-width: 600px) {
+  body {
+    line-height: 1.5;
+  }
+}
+@media (min-width: 1025px) {
+  body {
+    line-height: 1.75;
+  }
+}
+/** Hi├®rarchie responsive **/
+/*  plus proche = plus petit  &  plus loin = plus grand */
+h1,
+.h1 {
+  /* = 32px */
+  font-size: 20px;
+  font-size: 2rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+@media (min-width: 600px) {
+  h1,
+  .h1 {
+    /* = 40px */
+    font-size: 40px;
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1025px) {
+  h1,
+  .h1 {
+    /* = 48px */
+    font-size: 64px;
+    font-size: 6.4rem;
+  }
+}
+h2,
+.h2 {
+  /* = 24px */
+  font-size: 20px;
+  font-size: 2rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+@media (min-width: 600px) {
+  h2,
+  .h2 {
+    /* = 32px */
+    font-size: 32px;
+    font-size: 3.2rem;
+  }
+}
+@media (min-width: 1025px) {
+  h2,
+  .h2 {
+    /* = 36px */
+    font-size: 48px;
+    font-size: 4.8rem;
+  }
+}
+h3,
+.h3 {
+  /* = 18px */
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+@media (min-width: 600px) {
+  h3,
+  .h3 {
+    /* = 24px */
+    font-size: 20px;
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1025px) {
+  h3,
+  .h3 {
+    /* = 30px */
+    font-size: 24px;
+    font-size: 2.4rem;
+  }
+}
+h4,
+.h4 {
+  /* = 16px */
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+@media (min-width: 600px) {
+  h4,
+  .h4 {
+    /* = 18px */
+    font-size: 18px;
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 1025px) {
+  h4,
+  .h4 {
+    /* = 22px */
+    font-size: 22px;
+    font-size: 2.2rem;
+  }
+}
+/**** Hyperliens ****/
+a {
+  color: #EF0454;
+}
+a:visited {
+  color: #000a29;
+}
+a:hover {
+  color: #fd76a4;
+}
+
+.lienBouton {
+  background-color: #EF0454;
+  margin: 0.75em 0;
+  color: #FFFFFF;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-transform: inherit;
+  text-decoration: none;
+  width: 51.724137931%;
+  margin-left: 41.3793103448%;
+  text-align: center;
+}
+.lienBouton:hover {
+  background-color: #01165B;
+  text-decoration: none;
+}
+.lienBouton:visited {
+  text-decoration: none;
+}
+
+.medias__icones a:hover {
+  filter: 1;
+}
+
+/****** MODULES ******/
+/**** Menu principal responsive ****/
+/**
+ * MenuAccordeon version mobile seulement
+ *    mais les ├®tats des .menu__lien sont d├®finis aussi pour une version ├®cran large
+ * @todo Adapter ce fichier selon le projet
+ * @author Pr├®nom Nom courriel
+**/
+/**
+ * TABLE DES MATI├êRES
+ * Variables et mixins ├á transf├®rer dans les utilitaires
+ **** Palette de couleurs
+ **** Mixins
+ * ├ëtat des liens
+ * Menu version mobile (base)
+ **** Faux bouton menu (sans js)
+ * Menu version mobile avec js
+ * Bouton .menu__controle (avec icones SVG)
+ * Menu accord├®on version ├®cran large CACH├ë
+ */
+/****** Mixins du menuAccordeon ***********/
+/****** ├ëtats des liens ***********/
+.menu__lien {
+  display: block;
+  padding: 0.25rem 0.7rem;
+}
+.menu__lien:link, .menu__lien:visited {
+  text-decoration: none;
+  color: black;
+}
+.menu__lien:hover {
+  background-color: #01165B;
+  color: #FFFFFF;
+}
+.menu__lien:active, .menu__lien:focus {
+  outline-offset: -5px;
+  outline: #033bf2 auto 5px;
+}
+.menu__lien.menu__lien--actif {
+  background-color: #033bf2;
+  color: #FFFFFF;
+}
+
+/****** Menu version mobile *******/
+.menu {
+  background-color: #EF0454;
+  position: relative;
+}
+.menu .menu__logo {
+  display: inline-block;
+  background: url("../images/off-logo.svg") no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 70px;
+  position: absolute;
+  top: 9px;
+  left: 15px;
+}
+
+.accordeon .menu__liste {
+  overflow: hidden;
+  /* important pour ne pas voir les li s'en aller hors champs */
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+.accordeon .menu__listeItem {
+  border: none;
+  border-bottom: 1px solid #01165B;
+  display: block;
+  position: relative;
+  transition: all .5s ease-in-out;
+}
+
+/**** Menu version mobile sans JavaScript ****/
+.menu.accordeon {
+  display: none;
+}
+
+/* le faux bouton est un lien vers le menu du fat footer */
+.fauxBoutonMenu {
+  display: block;
+  text-align: center;
+  float: right;
+  background-color: transparent;
+  border: none;
+  width: 60px;
+  padding-top: 0.5rem;
+  text-decoration: none;
+}
+.fauxBoutonMenu .menu__libelle {
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-family: "Josefin Sans", sans-serif;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  display: block;
+}
+.fauxBoutonMenu .menu__icone {
+  width: 100%;
+  display: inline-block;
+  padding: 5px 5px 0px 5px;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+.fauxBoutonMenu .menu__icone .icone {
+  fill: #FFFFFF;
+}
+.fauxBoutonMenu:hover .menu__icone, .fauxBoutonMenu:active .menu__icone {
+  background-color: #01165B;
+}
+.fauxBoutonMenu .menu__icone {
+  width: calc(100% - 14px);
+}
+@media (min-width: 600px) {
+  .fauxBoutonMenu {
+    display: none;
+  }
+}
+
+.js .fauxBoutonMenu {
+  display: none;
+}
+
+/* Menu version mobile avec js*/
+.js .accordeon {
+  display: block;
+}
+.js .menu {
+  /* Bouton .menu__controle */
+}
+.js .menu__liste--fermer .menu__listeItem {
+  border: none;
+  max-height: 0;
+  top: -1000px;
+}
+.js .menu__liste--ouvert .menu__listeItem {
+  max-height: auto;
+  top: 0;
+}
+.js .menu__controle {
+  display: block;
+  text-align: center;
+  float: right;
+  background-color: transparent;
+  border: none;
+  width: 60px;
+  padding-top: 0.5rem;
+}
+.js .menu__controle .menu__libelle {
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-family: "Josefin Sans", sans-serif;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  display: block;
+}
+.js .menu__controle .menu__icone {
+  width: 100%;
+  display: inline-block;
+  padding: 5px 5px 0px 5px;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+.js .menu__controle .menu__icone .icone {
+  fill: #FFFFFF;
+}
+.js .menu__controle:hover .menu__icone, .js .menu__controle:active .menu__icone {
+  background-color: #01165B;
+}
+@media (min-width: 601px) {
+  .js .menu.accordeon {
+    display: none;
+  }
+}
+
+/**
+ * @author Pr├®nom Nom courriel
+ * Menu version ├®cran large
+ *** @todo ├á personnaliser selon concept
+**/
+.menu--large {
+  display: none;
+  position: relative;
+}
+@media (min-width: 600px) {
+  .menu--large {
+    display: block;
+    margin-bottom: 6rem;
+    /* Affichage du sous-menu actif */
+  }
+  .menu--large__logo {
+    display: inline-block;
+    background: url("../images/off-logo.svg") no-repeat;
+    background-size: contain;
+    width: 200px;
+    height: 70px;
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    z-index: 1;
+  }
+  .menu--large__liste {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    background-color: #EF0454;
+  }
+  .menu--large__listeItem {
+    list-style-type: none;
+    display: inline-block;
+    width: 18%;
+    text-align: center;
+    font-family: "Josefin Sans", sans-serif;
+  }
+  .menu--large__lien {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0 1rem 0;
+  }
+  .menu--large__lien:link, .menu--large__lien:visited {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+  .menu--large__listeItem {
+    background-color: #EF0454;
+  }
+  .menu--large__listeItem--actif .menu--large__lien:link, .menu--large__listeItem--actif .menu--large__lien:visited {
+    color: #FFFFFF;
+    background-color: #01165B;
+    position: relative;
+  }
+  .menu--large__listeItem--actif .menu--large__lien:link .menu--large__lien--active, .menu--large__listeItem--actif .menu--large__lien:visited .menu--large__lien--active {
+    background: url("../images/cercle_active.svg");
+    background-size: cover;
+    width: 15px;
+    height: 10px;
+    vertical-align: text-top;
+    display: block;
+    position: absolute;
+    left: 45%;
+    bottom: 5px;
+  }
+  .menu--large__sousListe {
+    display: none;
+  }
+  .menu--large__listeItem.menu--large__listeItem--actif .menu--large__sousListe {
+    display: block;
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .menu--large__listeItem.menu--large__listeItem--actif .menu--large__sousListe li {
+    display: inline-block;
+  }
+  .menu--large__listeItem.menu--large__listeItem--actif .menu--large__sousListe li {
+    background-color: #01165B;
+    margin: 1rem 0.5rem;
+    padding: 0 2rem;
+  }
+  .menu--large__listeItem.menu--large__listeItem--actif .menu--large__sousListe li:first-child {
+    margin-left: 0;
+  }
+}
+
+/**** Accordéon ****/
+/* --- accord├®on --- */
+/* Sans JavaScript par d├®faut, les blocs sont d├®ploy├®s */
+.accordeon__bloc {
+  display: block;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  list-style: none;
+  padding-left: 0;
+}
+
+.accordeon__controlePoignee {
+  float: right;
+  /* Sans JS, les chevrons up et down d'actionnement du m├®canisme sont cach├®s */
+}
+.accordeon__controlePoignee .icone {
+  display: none;
+}
+.accordeon__controlePoignee .icone--chevron-down {
+  background: url("../images/chevron-arrow-down.svg");
+}
+.accordeon__controlePoignee .icone--chevron-up {
+  background: url("../images/chevron-arrow-up.svg");
+}
+
+.accordeon__controle {
+  outline: none;
+  /* annuler les styles par d├®faut du button */
+  border: 1px solid #01165B;
+  text-align: left;
+  background-color: #eee;
+  font-weight: bold;
+  font-family: "Josefin Sans", sans-serif;
+  padding-top: 1rem;
+}
+
+.accordeon__controle,
+.accordeon__bloc {
+  width: 100%;
+}
+
+/* Avec JavaScript les boutons d'actionnement du m├®canisme s'affichent */
+.js .accordeon__controlePoignee .icone {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-position: center center;
+  background-size: contain;
+}
+.js .accordeon__controle:focus,
+.js .accordeon__pli--isExpanded .accordeon__controle {
+  background-color: #01165B;
+  color: #FFFFFF;
+}
+.js .accordeon__controle:focus .icone--chevron-up,
+.js .accordeon__pli--isExpanded .accordeon__controle .icone--chevron-up {
+  background-image: url("../images/chevron-arrow-up-blanc.svg");
+}
+.js .accordeon__controle:focus .icone--chevron-down,
+.js .accordeon__pli--isExpanded .accordeon__controle .icone--chevron-down {
+  background-image: url("../images/chevron-arrow-down-blanc.svg");
+}
+.js .accordeon__bloc,
+.js .accordeon__pli--isCollapsed .accordeon__bloc {
+  height: 0;
+}
+.js .accordeon__pli--isExpanded .accordeon__bloc {
+  background-color: #eee;
+  height: auto;
+}
+
+/**** Agencements ****/
+/****** AGENCEMENTS ******/
+/** Arri├¿re plan **/
+body {
+  background-color: #01165B;
+}
+
+.arriereplan {
+  padding-bottom: 4rem;
+  background: url("../images/fond_w600.jpg") repeat-y center;
+  background-size: 100%;
+  background-position: top;
+}
+@media (min-width: 1025px) {
+  .arriereplan {
+    background: url("../images/fond_w2880.jpg") no-repeat center;
+    background-size: 100%;
+    background-position: top;
+  }
+}
+
+/** Header **/
+@media (min-width: 1025px) {
+  .lienevitement {
+    display: block;
+    text-align: center;
+    background-color: #FFFFFF;
+  }
+}
+header p {
+  font-size: 20px;
+  font-size: 2rem;
+  margin: 0.75em 0;
+  color: #FFFFFF;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  header p {
+    font-size: 36px;
+    font-size: 3.6rem;
+  }
+}
+
+.h1 {
+  line-height: 0.5;
+  font-weight: bold;
+}
+@media (min-width: 1025px) {
+  .h1 {
+    padding-top: 2rem;
+  }
+}
+
+/** Main **/
+@media (min-width: 1025px) {
+  main {
+    background-color: rgba(1, 22, 91, 0.5);
+    padding: 1.6949152542%;
+  }
+}
+h1 {
+  line-height: 1;
+  padding-top: 2rem;
+}
+@media (min-width: 1025px) {
+  h1 {
+    padding-top: 2rem;
+    padding-left: 6.8965517241%;
+  }
+}
+
+h1,
+.h3 {
+  margin: 0.75em 0;
+  color: #FFFFFF;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+#top {
+  padding-top: 2rem;
+}
+
+.infosartiste {
+  margin: 0 2.6315789474%;
+}
+.infosartiste .audiovisuelle .h3 {
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+.infosartiste .details .lienBouton {
+  background-color: #EF0454;
+  margin: 0.75em 0;
+  color: #FFFFFF;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-transform: inherit;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 0;
+  width: 73.6842105263%;
+  text-decoration: none;
+}
+.infosartiste .details ul {
+  color: #FFFFFF;
+  padding: 0;
+  margin-top: 0;
+}
+.infosartiste .details .description {
+  background-color: #FFFFFF;
+  padding: 3.4482758621%;
+}
+.infosartiste .details .description .h2 {
+  color: #01165B;
+  font-weight: bold;
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+.infosartiste .details .description h2 {
+  color: #01165B;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: "Titillium Web", sans-serif;
+}
+.infosartiste .details .description p {
+  margin: 0;
+}
+
+@media (min-width: 1025px) {
+  .infosartiste {
+    margin: 0;
+    display: flex;
+  }
+  .infosartiste .audiovisuelle,
+  .infosartiste .details {
+    width: 49.1525423729%;
+  }
+  .infosartiste .audiovisuelle h2 {
+    padding-left: 6.8965517241%;
+  }
+  .infosartiste .details {
+    margin-left: 1.6949152542%;
+    padding-top: 3.5rem;
+  }
+  .infosartiste .details .alignerDroite {
+    margin: 0;
+  }
+  .infosartiste .details .alignerDroite .lienBouton {
+    text-decoration: none;
+    margin: 0;
+    margin-bottom: 1.5rem;
+    width: 48.275862069%;
+  }
+  .infosartiste .details .description .h2 {
+    font-size: 24px;
+    font-size: 2.4rem;
+  }
+}
+.suggestions {
+  margin: 0 2.6315789474%;
+  padding-top: 3rem;
+}
+.suggestions .h3 {
+  padding-left: 0;
+}
+@media (min-width: 1025px) {
+  .suggestions {
+    margin: 0;
+  }
+  .suggestions .h3 {
+    padding-left: 3.3898305085%;
+    margin-bottom: 2rem;
+  }
+}
+.suggestions .suggestions__artistes {
+  padding-left: 0;
+}
+.suggestions .suggestions__artistes a:hover picture {
+  filter: grayscale(1);
+  transition: all 0.5s ease;
+}
+.suggestions .suggestions__artistes a:hover figcaption {
+  background-color: #01165B;
+}
+.suggestions .suggestions__artistes figure {
+  margin: 0;
+}
+.suggestions .suggestions__artistes figure figcaption {
+  background-color: #EF0454;
+  margin: 0.75em 0;
+  color: #FFFFFF;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-transform: inherit;
+  text-decoration: none;
+  margin: 0;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+.suggestions .suggestions__artistes figure figcaption h2 {
+  margin: 0;
+}
+@media (min-width: 1025px) {
+  .suggestions .suggestions__artistes {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.top {
+  background-color: #EF0454;
+  margin: 0.75em 0;
+  color: #FFFFFF;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-transform: inherit;
+  text-decoration: none;
+  width: 66.6666666667%;
+  margin: 0 16.6666666667%;
+  padding: 0.5rem 0;
+}
+.top a {
+  text-decoration: none;
+  margin: 0.75em 0;
+  color: #FFFFFF;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-transform: inherit;
+}
+
+/** Footer **/
+footer {
+  background-color: #01165B;
+}
+footer ul {
+  padding-left: 0;
+}
+footer .wrap {
+  padding-top: 2rem;
+}
+footer .wrap .menu--footer {
+  display: none;
+}
+@media (min-width: 1025px) {
+  footer .wrap .menu--footer {
+    display: inline-block;
+    width: 83.0508474576%;
+    margin-left: 8.4745762712%;
+    font-weight: bold;
+  }
+  footer .wrap .menu--footer .menu--footer__liste {
+    background-color: #FFFFFF;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 8.1632653061%;
+  }
+  footer .wrap .menu--footer .menu--footer__liste .menu--footer__lien {
+    color: #01165B;
+    text-decoration: none;
+    font-size: 20px;
+    font-size: 2rem;
+  }
+  footer .wrap .menu--footer .menu--footer__liste .menu--footer__sousListe {
+    padding-left: 1rem;
+  }
+  footer .wrap .menu--footer .menu--footer__liste .menu--footer__sousListe .menu--footer__souslien {
+    text-decoration: none;
+  }
+}
+
+.followme {
+  margin: 0 2.6315789474%;
+  color: #FFFFFF;
+}
+.followme .medias {
+  padding: 2rem 0;
+}
+.followme .medias .medias__icones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.followme .medias .medias__icones li {
+  width: 21.0526315789%;
+}
+.followme .medias .medias__icones li svg {
+  width: 100%;
+}
+.followme .infolettre input[type=submit] {
+  border: 0;
+  padding: 0.5rem 0;
+  width: 66.6666666667%;
+  margin: 0 16.6666666667%;
+}
+.followme .infolettre input[type=email] {
+  display: block;
+  width: 100%;
+  margin-bottom: 5.2631578947%;
+}
+@media (min-width: 1025px) {
+  .followme {
+    width: 83.0508474576%;
+    margin-left: 8.4745762712%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .followme h2 {
+    margin: 0.75em 0;
+    color: #FFFFFF;
+    text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.75);
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-transform: inherit;
+  }
+  .followme .medias {
+    padding: 0;
+    width: 48.9795918367%;
+  }
+  .followme .medias .medias__icones {
+    justify-content: space-around;
+  }
+  .followme .medias .medias__icones li {
+    width: 16.6666666667%;
+  }
+  .followme .infolettre {
+    width: 48.9795918367%;
+  }
+  .followme .infolettre form div {
+    padding: 0 3rem;
+  }
+}
+
+small {
+  text-align: center;
+  display: block;
+  color: #FFFFFF;
+  padding-top: 5rem;
+}
+
+/****** GRILLE ******/
+@media (min-width: 601px) {
+  .wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 10vh;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

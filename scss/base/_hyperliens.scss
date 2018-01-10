@@ -1,0 +1,29 @@
+a{
+  color:$hyperlien;
+  &:visited {
+    color:darken($dominante, 10%);
+  }
+  &:hover {
+    color:lighten($secondaire, 25%);
+  }
+}
+
+.lienBouton{
+  @include bouton;
+  width: span(3 wide of 6);
+  margin-left: span(2 wide of 6)+span(1 of 6)/2;
+  text-align: center;
+  &:hover{
+    background-color: $gulfBlue;
+    text-decoration: none;
+  }
+  &:visited{
+    text-decoration: none;
+  }
+}
+
+.medias__icones{
+  a:hover{
+    filter: alpha($gulfBlue);
+  }
+}
